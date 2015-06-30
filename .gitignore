@@ -1,2 +1,5 @@
 # snapshots
 *.z
+
+# res
+ciKu/Res*

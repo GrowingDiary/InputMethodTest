@@ -1,1 +1,1 @@
-﻿Call RunAction("Action1", oneIteration)
+﻿RunAction "DictVerify", oneIteration

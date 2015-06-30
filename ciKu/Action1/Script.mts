@@ -1,59 +1,8 @@
 ﻿'for i=1 to 10
 
-Function GetFileNameByRegular(baseDir, regExp)
-	Set objRegEx = CreateObject("VBScript.RegExp")
-	objRegEx.Pattern = regExp
-	
-	Dim oFolders
-	Dim oRoot, oFolder
-    Dim oFiles, oFile
-    Dim colMatches
-    
-    Set FSO = CreateObject("Scripting.FileSystemObject")
-    Set oRoot = FSO.GetFolder(baseDir)
-    Set oFolders = oRoot.SubFolders
-    
-    For Each oFolder In oFolders
-    	Set colMatches = objRegEx.Execute(oFolder.Path)
-		If colMatches.Count > 0 Then
-			GetFileNameByRegular = oFolder.Path
-			Exit Function
-		End If
-    Next
-	
-	Set oFiles = oRoot.Files
-	For Each oFile In oFiles
-    	Set colMatches = objRegEx.Execute(oFile.Name)
-		If colMatches.Count > 0 Then
-			GetFileNameByRegular = oFile.Path
-			Exit Function
-		End If
-    Next
-	
-	GetFileNameByRegular = baseDir
-End Function
-
-Systemutil.run GetFileNameByRegular("C:\Users\Administrator\Desktop\QTP要测试的版本\", "2345pinyin_v[0-9]\.[0-9]\.[0-9]*\.exe")
-
-Dialog("2345王牌输入法v*.*安装").Click 341,293 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf49.xml_;_
-Dialog("2345王牌输入法v*.*安装").Click 275,306 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf52.xml_;_
-wait 30
-Dialog("2345王牌输入法v*.*安装").Click 329,302 @@ hightlight id_;_397222_;_script infofile_;_ZIP::ssf68.xml_;_
-
-Dialog("2345王牌输入法设置向导").WinComboBox("ComboBox").Select "8" @@ hightlight id_;_592570_;_script infofile_;_ZIP::ssf53.xml_;_
-Dialog("2345王牌输入法设置向导").WinComboBox("ComboBox_2").Select "大" @@ hightlight id_;_789932_;_script infofile_;_ZIP::ssf54.xml_;_
-Dialog("2345王牌输入法设置向导").Click 526,410 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf55.xml_;_
-Dialog("2345王牌输入法设置向导").Click 526,410 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf56.xml_;_
-
-Dialog("2345王牌输入法设置向导").Click 61,355 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf57.xml_;_
-Dialog("2345王牌输入法设置向导").Click 540,409 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf58.xml_;_
-
-
-
-
-
-
-
+Dim ExeFileName
+RunAction "GetFileNameByRegular", oneIteration, "C:\Users\Administrator\Desktop\QTP要测试的版本\", "2345pinyin_v[0-9]\.[0-9]\.[0-9]*\.exe", ExeFileName
+RunAction "InstallInputMethod", oneIteration, ExeFileName
 
 Dim WshShell, autoSaveTime,TXTFileName
 AutoSaveTime=10
@@ -98,18 +47,11 @@ WshShell.SendKeys ("%{F4}")
 
 FileContent("词库运行结果.txt").Check CheckPoint("词库运行结果.txt")
 
+Dim UninstallExeFileName
+RunAction "GetFileNameByRegular", oneIteration, "C:\Program Files (x86)\2345Soft\2345Pinyin\", "[0-9]\.[0-9]\.[0-9]\.[0-9]*", UninstallExeFileName
+RunAction "UninstallInputMethod", oneIteration, UninstallExeFileName & "\Uninstall.exe"
+ @@ hightlight id_;_396190_;_script infofile_;_ZIP::ssf67.xml_;_
 
-Systemutil.run GetFileNameByRegular("C:\Program Files (x86)\2345Soft\2345Pinyin\", "[0-9]\.[0-9]\.[0-9]\.[0-9]*") & "\Uninstall.exe"
-
-
-
- @@ hightlight id_;_1880172800_;_script infofile_;_ZIP::ssf62.xml_;_
-Dialog("2345王牌输入法v*.*卸载").Click 30,356 @@ hightlight id_;_396190_;_script infofile_;_ZIP::ssf63.xml_;_
-Dialog("2345王牌输入法v*.*卸载").Click 69,363 @@ hightlight id_;_396190_;_script infofile_;_ZIP::ssf64.xml_;_
-Dialog("2345王牌输入法v*.*卸载").Click 420,349 @@ hightlight id_;_396190_;_script infofile_;_ZIP::ssf65.xml_;_
-Dialog("2345王牌输入法v*.*卸载").Dialog("2345好压卸载程序").Click 235,169 @@ hightlight id_;_658498_;_script infofile_;_ZIP::ssf66.xml_;_
-wait 15
-Dialog("2345王牌输入法v*.*卸载").Click 521,350 @@ hightlight id_;_396190_;_script infofile_;_ZIP::ssf67.xml_;_
 
 
 
@@ -182,7 +124,6 @@ Dialog("2345王牌输入法v*.*卸载").Click 521,350 @@ hightlight id_;_396190_
 '
 '
 '
-
 
 
 

@@ -1,21 +1,16 @@
 ﻿
+Print("Path: " & parameter("ExePath"))
+Systemutil.run parameter("ExePath")
 
-Const ForReading = 1
+Dialog("2345王牌输入法v*.*安装").Click 341,293 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf49.xml_;_
+Dialog("2345王牌输入法v*.*安装").Click 275,306 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf52.xml_;_
+wait 30
+Dialog("2345王牌输入法v*.*安装").Click 329,302 @@ hightlight id_;_397222_;_script infofile_;_ZIP::ssf68.xml_;_
 
-Set objRegEx = CreateObject("VBScript.RegExp")
-objRegEx.Pattern = "^[1-9]...GRP"
+Dialog("2345王牌输入法设置向导").WinComboBox("ComboBox").Select "8" @@ hightlight id_;_592570_;_script infofile_;_ZIP::ssf53.xml_;_
+Dialog("2345王牌输入法设置向导").WinComboBox("ComboBox_2").Select "大" @@ hightlight id_;_789932_;_script infofile_;_ZIP::ssf54.xml_;_
+Dialog("2345王牌输入法设置向导").Click 526,410 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf55.xml_;_
+Dialog("2345王牌输入法设置向导").Click 526,410 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf56.xml_;_
 
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-Set objFile = objFSO.OpenTextFile("C:\Scripts\Test.txt", ForReading)
-
-Do Until objFile.AtEndOfStream
-    strSearchString = objFile.ReadLine
-    Set colMatches = objRegEx.Execute(strSearchString)  
-    If colMatches.Count > 0 Then
-        For Each strMatch in colMatches   
-            Wscript.Echo strSearchString 
-        Next
-    End If
-Loop
-
-objFile.Close
+Dialog("2345王牌输入法设置向导").Click 61,355 @@ hightlight id_;_985772_;_script infofile_;_ZIP::ssf57.xml_;_
+Dialog("2345王牌输入法设置向导").Click 540,409

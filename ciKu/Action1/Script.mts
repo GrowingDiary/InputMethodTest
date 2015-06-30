@@ -33,7 +33,7 @@ Function GetFileNameByRegular(baseDir, regExp)
 	GetFileNameByRegular = baseDir
 End Function
 
-Systemutil.run GetFileNameByRegular("E:\Documents\Desktop\", "2345pinyin_v[0-9]\.[0-9]\.[0-9]*\.exe")
+Systemutil.run GetFileNameByRegular("C:\Users\Administrator\Desktop\QTP要测试的版本\", "2345pinyin_v[0-9]\.[0-9]\.[0-9]*\.exe")
 
 Dialog("2345王牌输入法v*.*安装").Click 341,293 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf49.xml_;_
 Dialog("2345王牌输入法v*.*安装").Click 275,306 @@ hightlight id_;_395960_;_script infofile_;_ZIP::ssf52.xml_;_
@@ -182,7 +182,6 @@ Dialog("2345王牌输入法v*.*卸载").Click 521,350 @@ hightlight id_;_396190_
 '
 '
 '
-
 
 
 

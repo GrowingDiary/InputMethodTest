@@ -1,6 +1,6 @@
-﻿
-Print("BaseDir: " & parameter("BaseDir"))
-Print("RegExp: " & parameter("RegExp"))
+﻿'Log Parameter
+Print("INFO " & Environment("ActionName") & " - Parameter BaseDir: " & parameter("BaseDir"))
+Print("INFO " & Environment("ActionName") & " - Parameter RegExp: " & parameter("RegExp"))
 
 Set objRegEx = CreateObject("VBScript.RegExp")
 objRegEx.Pattern = parameter("RegExp")
@@ -11,7 +11,13 @@ Dim oFiles, oFile
 Dim colMatches
 
 Set FSO = CreateObject("Scripting.FileSystemObject")
+On Error Resume Next
 Set oRoot = FSO.GetFolder(parameter("BaseDir"))
+If Err.number <> 0 Then
+	Print("ERROR " & Environment("ActionName") & " - Not Exist " & parameter("BaseDir"))
+	parameter("FileName") = ""
+	ExitActionIteration()
+End If
 Set oFolders = oRoot.SubFolders
 
 For Each oFolder In oFolders
@@ -31,4 +37,4 @@ For Each oFile In oFiles
 	End If
 Next
 
-parameter("FileName") = parameter("BaseDir")
+parameter("FileName") = ""
